@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
 const Customers = () => {
-  return <h1>Customers</h1>;
+  return <row></row>;
 };
 
 export default Customers;

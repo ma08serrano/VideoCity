@@ -1,5 +1,5 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Joi from "joi-browser";
 import Form from "./common/form";
 import auth from "../services/authService";
@@ -39,13 +39,30 @@ class LoginForm extends Form {
     if (auth.getCurrentUser()) return <Redirect to="/" />;
 
     return (
-      <div>
-        <h1>Login</h1>
-        <form onSubmit={this.handleSubmit}>
-          {this.renderInput("username", "Username")}
-          {this.renderInput("password", "Password", "password")}
-          {this.renderButton("Login")}
-        </form>
+      <div className="container">
+        <div className="row justify-content-center">
+          <div className="login-card">
+            <div className="container mt-4 mb-4">
+              <div className="title text-center">
+                <h1>Login</h1>
+              </div>
+            </div>
+
+            <div className="container">
+              <form onSubmit={this.handleSubmit}>
+                {this.renderInput("username", "Username")}
+                {this.renderInput("password", "Password", "password")}
+
+                <div className="mt-4">{this.renderButton("Login")}</div>
+                <div className="row justify-content-center mt-1 mb-4">
+                  <Link to="/register" className="create-account">
+                    Create Account
+                  </Link>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
