@@ -113,15 +113,10 @@ class Movies extends Component {
         </div>
         <div className="col">
           {user && (
-            <Link
-              to="/movies/new"
-              className="btn btn-primary"
-              style={{ marginBottom: 20 }}
-            >
+            <Link to="/movies/new" className="btn btn-success mb-2 float-right">
               New Movie
             </Link>
           )}
-          <p>Showing {totalCount} movies in the database.</p>
           <SearchBox value={searchQuery} onChange={this.handleSearch} />
           <MoviesTable
             movies={movies}
@@ -136,6 +131,9 @@ class Movies extends Component {
             currentPage={currentPage}
             onPageChange={this.handlePageChange}
           />
+          <p className="countNum float-right">
+            Showing {totalCount} movies in the database.
+          </p>
         </div>
       </div>
     );

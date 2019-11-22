@@ -4,6 +4,17 @@
   color: #00233a;
 }
 
+.create-account,
+.login-account {
+  color: #838383;
+  font-size: 12px;
+}
+
+.countNum {
+  color: #838383;
+  font-size: 14px;
+}
+
 /* Login */
 .login-card {
   width: 345px;
@@ -13,7 +24,11 @@
   background: #ffffff;
 }
 
-.create-account {
-  color: #838383;
-  font-size: 12px;
+/* Register */
+.register-card {
+  width: 728px;
+  height: auto;
+  border-radius: 3px;
+  box-shadow: 0 2px 6px 0 rgba(47, 83, 151, 0.16);
+  background-color: #ffffff;
 }

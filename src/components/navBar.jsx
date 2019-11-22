@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 
 const NavBar = ({ user }) => {
   return (
-    <div className="mt-5">
+    <div>
       {user && (
         <React.Fragment>
           <nav className="navbar navbar-expand-lg navbar-light bg-light">

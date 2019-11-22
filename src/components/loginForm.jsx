@@ -41,7 +41,7 @@ class LoginForm extends Form {
     return (
       <div className="container">
         <div className="row justify-content-center">
-          <div className="login-card">
+          <div className="login-card mt-5">
             <div className="container mt-4 mb-4">
               <div className="title text-center">
                 <h1>Login</h1>
