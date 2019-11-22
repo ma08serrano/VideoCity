@@ -37,12 +37,12 @@ const NavBar = ({ user }) => {
           </li>
           {!user && (
             <React.Fragment>
-              <li className="nav-item">
+              <li className="nav-item navbar-right">
                 <NavLink className="nav-link" to="/login">
                   Login
                 </NavLink>
               </li>
-              <li className="nav-item">
+              <li className="nav-item navbar-right">
                 <NavLink className="nav-link" to="/register">
                   Register
                 </NavLink>
