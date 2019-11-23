@@ -1,7 +1,16 @@
-import React from "react";
+import React, { Component } from "react";
+import CustomersTable from "./customersTable";
 
-const Customers = () => {
-  return <row></row>;
-};
+class Customers extends Component {
+  render() {
+    return (
+      <div className="row">
+        <div className="col">
+          <CustomersTable />
+        </div>
+      </div>
+    );
+  }
+}
 
 export default Customers;
