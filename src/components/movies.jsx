@@ -98,7 +98,18 @@ class Movies extends Component {
     const { pageSize, currentPage, sortColumn, searchQuery } = this.state;
     const { user } = this.props;
 
-    if (count === 0) return <p>There are no movies in the database.</p>;
+    if (count === 0) {
+      return (
+        <React.Fragment>
+          {user && (
+            <Link to="/movies/new" className="btn btn-success mb-2 float-right">
+              New Movie
+            </Link>
+          )}
+          <p>There are no movies in the database.</p>
+        </React.Fragment>
+      );
+    }
 
     const { totalCount, data: movies } = this.getPagedData();
 
