@@ -6,23 +6,22 @@ const NavBar = ({ user }) => {
     <div>
       {user && (
         <React.Fragment>
-          <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <Link className="navbar-brand" to="#">
+          <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+            <Link className="navbar-brand" to="/movies">
               Video City
             </Link>
+
             <button
               className="navbar-toggler"
               type="button"
               data-toggle="collapse"
-              data-target="#navbarNav"
-              aria-controls="navbarNav"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
+              data-target="#collapse_target"
             >
               <span className="navbar-toggler-icon"></span>
             </button>
-            <div className="collapse navbar-collapse" id="navbarNav">
-              <ul className="nav navbar-nav">
+
+            <div className="collapse navbar-collapse" id="collapse_target">
+              <ul className="navbar-nav">
                 <li className="nav-item active">
                   <NavLink className="nav-link" to="/movies">
                     Movies <span className="sr-only">(current)</span>
