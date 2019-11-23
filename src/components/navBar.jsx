@@ -37,6 +37,8 @@ const NavBar = ({ user }) => {
                     Rentals
                   </NavLink>
                 </li>
+              </ul>
+              <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
                   <NavLink className="nav-link" to="/profile">
                     {user.name}
