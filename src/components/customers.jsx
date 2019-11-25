@@ -1,10 +1,12 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import CustomersTable from "./customersTable";
 import Pagination from "./common/pagination";
 import { getCustomers, deleteCustomer } from "../services/fakeCustomerService";
 import { paginate } from "../utils/paginate";
 import _ from "lodash";
+import SearchBox from "./searchBox";
 
 class Customers extends Component {
   state = {
@@ -16,9 +18,7 @@ class Customers extends Component {
   };
 
   async componentDidMount() {
-    const { data } = await getCustomers();
-    console.log(data);
-    this.setState({ data });
+    this.setState({ customers: getCustomers() });
   }
 
   handleDelete = async customer => {
@@ -54,14 +54,13 @@ class Customers extends Component {
       currentPage,
       sortColumn,
       searchQuery,
-      customer: allCustomers
+      customers: allCustomers
     } = this.state;
 
     let filtered = allCustomers;
-    if (searchQuery)
-      filtered = allCustomers.filter(m =>
-        m.title.toLowerCase().startsWith(searchQuery.toLowerCase())
-      );
+    filtered = allCustomers.filter(c =>
+      c.fname.toLowerCase().startsWith(searchQuery.toLowerCase())
+    );
 
     const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);
 
@@ -72,29 +71,45 @@ class Customers extends Component {
 
   render() {
     const { length: count } = this.state.customers;
-    const { pageSize, currentPage, customers: allCustomers } = this.state;
+    const { pageSize, currentPage, sortColumn, searchQuery } = this.state;
     const { user } = this.props;
 
-    if (count === 0) return <p>There are no customers in the database.</p>;
+    if (count === 0) return <React.Fragment>
+      {!user && (
+        <Link to="/customers/new" className="btn btn-success mb-2 float-right">
+          New Customer
+      </Link>
+      )}
+      <p>There are no customers in the database.</p>
+    </React.Fragment>
 
-    const customers = paginate(allCustomers, currentPage, pageSize);
+    const { totalCount, data: customers } = this.getPagedData();
 
     return (
       <div className="row">
-        <CustomersTable
-          customers={customers}
-          onDelete={this.handleDelete}
-          onSort={this.handleSort}
-        />
-        <Pagination
-          itemsCount={count}
-          pageSize={pageSize}
-          currentPage={currentPage}
-          onPageChange={this.handlePageChange}
-        />
-        <p className="countNum float-right">
-          Showing {count} customers in the database.
+        <div className="col">
+          {!user && (
+            <Link to="/customers/new" className="btn btn-success mb-2 float-right">
+              New Customer
+            </Link>
+          )}
+          <SearchBox value={searchQuery} onChange={this.handleSearch} />
+          <CustomersTable
+            customers={customers}
+            sortColumn={sortColumn}
+            onDelete={this.handleDelete}
+            onSort={this.handleSort}
+          />
+          <Pagination
+            itemsCount={totalCount}
+            pageSize={pageSize}
+            currentPage={currentPage}
+            onPageChange={this.handlePageChange}
+          />
+          <p className="countNum float-right">
+            Showing {count} customers in the database.
         </p>
+        </div>
       </div>
     );
   }
