@@ -3,6 +3,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 <img width="1488" alt="Screen Shot 2019-11-25 at 8 06 51 AM" src="https://user-images.githubusercontent.com/30482314/69542955-9042ed80-0f5a-11ea-9b74-5337de5ef179.png">
 - An incomplete dashboard page where the admin user can add, update and delete movies.
 
+
 Below you will find some information on how to perform common tasks.<br>
 You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
